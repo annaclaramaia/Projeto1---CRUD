@@ -1,0 +1,65 @@
+@page "/clientes"
+@using Projeto1.Interfaces
+@rendermode InteractiveServer
+@inject IClienteRepository _clienteRepository
+
+<h3>Listagem de Clientes</h3>
+<a href="/clientes/add" class="btn btn-primary">
+    Adicionar
+</a>
+
+
+@if (listaClientes == null || listaClientes.Count == 0){
+    <p>Carregando Clientes...</p>
+} else {
+
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>                                
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach(var item in listaClientes)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Nome</td>
+                    <td>@item.Email</td>
+                    <td>@item.Telefone</td>
+                    <td>
+                        <a href="/clientes/edit/@item.Id" class="btn btn-sm btn-warning">
+                            Editar
+                        </a>
+                        <button type="button" class="btn btn-sm btn-danger" @onclick="@(() => DeletarCliente(item.Id))">
+                            Deletar
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+
+    private List<Cliente> listaClientes = new List<Cliente>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        listaClientes = await _clienteRepository.ListarTodoAsync();
+    }
+
+    private async Task DeletarCliente(int id)
+    {
+        await _clienteRepository.ExcluirAsync(id);
+        listaClientes = await _clienteRepository.ListarTodoAsync();
+    }
+}

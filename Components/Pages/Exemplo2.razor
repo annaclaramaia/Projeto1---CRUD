@@ -1,0 +1,63 @@
+@page "/exemplo2"
+@rendermode InteractiveServer
+
+<PageTitle>Exemplo-02</PageTitle>
+
+<form>
+
+<div class="row">
+    
+    <div class="col-md-4">
+        <label for="nomeInput" class="form-label">Nome:</label>
+        <input type="text" @bind="xnome" @bind:event="oninput" class="form-control" id="nomeInput" placeholder="Digite seu nome">
+        @if (string.IsNullOrEmpty(xnome))
+        {
+            <span class="text-muted">Informe o seu nome completo</span>
+        }
+    </div>
+
+    <div class="col-md-4">
+        <label for="cidadeInput" class="form-label">Cidade:</label>
+        <input type="text" @bind="xcidade" @bind:event="oninput" class="form-control" id="cidadeInput" placeholder="Digite sua Cidade">
+    </div>
+
+</div>
+
+@if(string.IsNullOrEmpty(xnome)) 
+{ 
+    <div class="row">
+
+        <div class="col-md-2">
+
+            <button type="button" class="btn btn-success">Salvar</button>
+
+        </div>
+    </div>
+
+}
+
+</form>
+
+<style>
+    .form-control {
+        border: 2px solid #800080;
+    }
+</style>
+
+
+@code {
+    private string xnome = "";
+
+    private string xcidade = "";
+
+    private bool MostraBotao = false;
+
+    private void ValidaBotao(){
+
+        if (!string.IsNullOrEmpty(xnome)  &&  !string.IsNullOrEmpty(xcidade)){
+            MostraBotao = true;
+        } else {
+            MostraBotao = false;
+        }
+    }
+}

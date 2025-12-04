@@ -1,0 +1,34 @@
+﻿@page "/"
+@rendermode InteractiveServer
+
+<PageTitle>Home</PageTitle>
+
+<h1>
+
+    @Message
+
+</h1>
+
+<h3>Seja bem vindo ao nosso sistema</h3>
+
+<ul>
+<li>FRANCA-SP</li>
+<li>RIBEIRÃO PRETO-SP</li>
+</ul>
+
+<button class="btn btn-primary">Clique Aqui</button>
+
+<style>
+
+li {
+    background-color: #800080;
+    color: white;
+    padding: 10px;
+}
+
+</style>
+
+@code {
+
+    public string Message = "Olá aluno da fatec";
+}

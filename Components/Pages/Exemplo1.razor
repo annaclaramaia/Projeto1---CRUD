@@ -1,0 +1,105 @@
+@page "/exemplo1"
+@rendermode InteractiveServer
+
+<PageTitle>Exemplo-01</PageTitle>
+
+<h1>@Título</h1>
+<p>Esta é a página de exemplo 1.</p>
+
+<form>
+
+<div class="row">
+    
+    <div class="col-md-4">
+        <label for="nomeInput" class="form-label">Nome:</label>
+        <input type="text" @bind-value="xNome" class="form-control" id="nomeInput" placeholder="Digite seu nome">
+    </div>
+    
+    <div class="col-md-4">
+        <label for="endeInput" class="form-label">Endereço:</label>
+        <input type="text" class="form-control" id="endeInput" placeholder="Digite seu Endereço">
+    </div>
+
+    <div class="col-md-4">
+        <label for="emailInput" class="form-label">Email:</label>
+        <input type="email" class="form-control" id="emailInput" placeholder="Digite seu Email">
+    </div>
+    
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <label for="telefoneInput" class="form-label">Telefone:</label>
+        <input type="text" class="form-control" id="telefoneInput" placeholder="Digite seu Telefone">
+    </div>
+    
+    <div class="col-md-4">
+        <label for="cidadeInput" class="form-label">Cidade:</label>
+        <input type="text" class="form-control" id="cidadeInput" placeholder="Digite sua Cidade">
+    </div>
+    
+    <div class="col-md-4">
+        <label for="cepInput" class="form-label">CEP:</label>
+        <input type="text" @bind-value="xCep" class="form-control" id="cepInput" placeholder="Digite seu CEP">
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-2">
+
+        <button type="button" @onclick="Enviar" class="btn btn-success">Enviar</button>
+
+    </div>
+
+    <div class="col-md-2">
+
+        <button type="reset" class="btn btn-danger">Limpar</button>
+    
+    </div>
+
+</div>
+
+</form>
+
+@*
+
+pressionando shift + alt + f10
+
+*@
+
+<style>
+    .form-control {
+        margin-bottom: 15px;
+        border: 2px solid blue;
+    }
+</style>
+
+@code {
+
+    private string Título="Formulário de Cadastro";
+
+    private string xNome;
+    private string xCep = "";
+
+    private void Enviar()
+    {
+        if(string.IsNullOrEmpty(xNome))
+        {
+            Título = "Por favor, preencha o campo Nome.";
+            return;
+        }
+
+        if(string.IsNullOrEmpty(xCep))
+        {
+            Título = "Por favor, preencha o campo CEP.";
+            return;
+        }
+
+        Título = "Formulário Enviado com Sucesso!";
+        // StateHasChanged();
+
+    }
+}
