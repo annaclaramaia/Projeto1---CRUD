@@ -150,3 +150,4 @@ C:\Blazor9\Projeto1\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.r
 C:\Blazor9\Projeto1\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Blazor9\Projeto1\obj\Debug\net9.0\Projeto1.csproj.AssemblyReference.cache
 C:\Blazor9\Projeto1\obj\Debug\net9.0\Projeto1.csproj.Up2Date
+C:\Blazor9\Projeto1\obj\Debug\net9.0\Projeto1.sourcelink.json
